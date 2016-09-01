@@ -37,15 +37,15 @@ rcvar=solr_enable
 load_rc_config $name
 
 : ${solr_enable:=NO}
-: ${solr_instance:=%%PREFIX%%%%CPE_PRODUCT%%/server/solr}
+: ${solr_instance:=%%PREFIX%%/solr/server/solr}
 : ${solr_port:=8983}
 
 required_files=${solr_instance}/solr.xml
 pidfile=/var/run/solr.pid
-command=/usr/sbin/daemon
-procname=bin/solr
-start_precmd="cd %%PREFIX%%%%CPE_PRODUCT%%"
+command=%%PREFIX%%/solr/bin/solr
+solr_env="PATH=/sbin:/bin:/usr/sbin:/usr/bin:/usr/games:/usr/local/sbin:/usr/local/bin"
+solr_chdir="/usr/local/solr"
 
-command_args="-f -p ${pidfile} ${procname} ${solr_flags} -p ${solr_port} -Dsolr.solr.home=${solr_instance} -Dsolr.log=/var/log"
+command_args=" ${solr_flags} -p ${solr_port} -s ${solr_instance} -a \"-Dsolr.log=/var/log\""
 
 run_rc_command "$1"
