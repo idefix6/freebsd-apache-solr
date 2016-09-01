@@ -37,14 +37,15 @@ rcvar=solr_enable
 load_rc_config $name
 
 : ${solr_enable:=NO}
-: ${solr_instance:=/var/db/solr}
+: ${solr_instance:=%%PREFIX%%%%CPE_PRODUCT%%/server/solr}
+: ${solr_port:=8983}
 
 required_files=${solr_instance}/solr.xml
 pidfile=/var/run/solr.pid
 command=/usr/sbin/daemon
-procname=`env JAVAVM_DRYRUN=true JAVA_VERSION=1.7+ %%LOCALBASE%%/bin/java | grep JAVAVM_PROG | cut -f 2 -d =`
-start_precmd="cd %%EXAMPLESDIR%%"
+procname=bin/solr
+start_precmd="cd %%PREFIX%%%%CPE_PRODUCT%%"
 
-command_args="-f -p ${pidfile} ${procname} ${solr_flags} -Dsolr.solr.home=${solr_instance} -Dsolr.log=/var/log -jar %%EXAMPLESDIR%%/start.jar"
+command_args="-f -p ${pidfile} ${procname} ${solr_flags} -p ${solr_port} -Dsolr.solr.home=${solr_instance} -Dsolr.log=/var/log"
 
 run_rc_command "$1"
