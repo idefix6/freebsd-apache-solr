@@ -38,7 +38,6 @@ load_rc_config $name
 
 : ${solr_enable:=NO}
 : ${solr_instance:=%%PREFIX%%/solr/server/solr}
-: ${solr_port:=8983}
 
 solr_stop ()
 {
@@ -52,13 +51,14 @@ solr_status ()
 
 # add %%PREFIX%%/bin to path
 export PATH=$PATH:%%PREFIX%%/bin
+# let the start script read some custom settings
+export SOLR_INCLUDE=/usr/local/etc/solr.in.sh
 
 required_files=${solr_instance}/solr.xml
-pidfile=%%PREFIX%%/solr/bin/solr-${solr_port}.pid
 command=%%PREFIX%%/solr/bin/solr
 stop_cmd=solr_stop
 status_cmd=solr_status
 
-command_args=" ${solr_flags} -p ${solr_port} -s ${solr_instance} -a \"-Dsolr.log=/var/log\""
+command_args=" ${solr_flags} -s ${solr_instance} -a \"-Dsolr.log=/var/log\""
 
 run_rc_command "$1"

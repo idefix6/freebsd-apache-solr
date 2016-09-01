@@ -1,0 +1,6 @@
+Make sure to copy %%LOCALBASE%%/etc/solr.in.sh.dist to solr.in.sh and configure it to your needs.
+
+The port configured solr already to listen only on localhost.
+
+To rotate solr log files include %%LOCALBASE%%/solr/server/logs to your log rotation configuration.
+
