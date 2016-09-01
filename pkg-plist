@@ -6181,3 +6181,6 @@ solr/server/solr/configsets/sample_techproducts_configs/conf/xslt/updateXml.xsl
 solr/server/solr/solr.xml
 solr/server/solr/zoo.cfg
 solr/server/start.jar
+@dir /var/db/solr
+@dir /var/log/solr
+
