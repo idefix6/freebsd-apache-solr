@@ -37,16 +37,21 @@ rcvar=solr_enable
 load_rc_config $name
 
 : ${solr_enable:=NO}
-: ${solr_instance:=%%PREFIX%%/solr/server/solr}
+: ${solr_instance:=/var/db/solr}
+
+solr_start ()
+{
+	su -m solr -c "${command} start"
+}
 
 solr_stop ()
 {
-	${command} stop
+	su -m solr -c "${command} stop"
 }
 
 solr_status ()
 {
-	${command} status
+	su -m solr -c "${command} status"
 }
 
 # add %%PREFIX%%/bin to path
@@ -54,11 +59,10 @@ export PATH=$PATH:%%PREFIX%%/bin
 # let the start script read some custom settings
 export SOLR_INCLUDE=/usr/local/etc/solr.in.sh
 
-required_files=${solr_instance}/solr.xml
+required_files="${solr_instance}/solr.xml /usr/local/etc/solr.in.sh /var/log/solr/log4j.properties"
 command=%%PREFIX%%/solr/bin/solr
+start_cmd=solr_start
 stop_cmd=solr_stop
 status_cmd=solr_status
-
-command_args=" ${solr_flags} -s ${solr_instance} -a \"-Dsolr.log=/var/log\""
 
 run_rc_command "$1"

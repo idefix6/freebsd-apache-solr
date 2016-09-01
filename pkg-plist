@@ -1,4 +1,6 @@
-etc/solr.in.sh.dist
+etc/solr.in.sh-dist
+/var/db/solr/solr.xml-dist
+/var/log/solr/log4j.properties-dist
 solr/CHANGES.txt
 solr/LICENSE.txt
 solr/LUCENE_CHANGES.txt

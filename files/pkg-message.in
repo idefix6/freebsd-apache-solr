@@ -1,6 +1,24 @@
-Make sure to copy %%LOCALBASE%%/etc/solr.in.sh.dist to solr.in.sh and configure it to your needs.
+=======================================================================
+
+Make sure to copy the following files and configure them accordingly:
+%%LOCALBASE%%/etc/solr.in.sh.dist -> %%LOCALBASE%%/etc/solr.in.sh
+/var/db/solr/solr.xml-dist -> /var/db/solr/solr.xml
+/var/db/solr/log4j.properties-dist -> /var/db/solr/log4j.properties
+
+All files are configured to have you solr instances running in
+/var/db/solr/<instancename>
+
+For more information how to configure solr check the manual:
+http://lucene.apache.org/solr/resources.html#documentation
 
 The port configured solr already to listen only on localhost.
 
-To rotate solr log files include %%LOCALBASE%%/solr/server/logs to your log rotation configuration.
+To rotate solr log files include /var/solr/logs to your log rotation configuration.
 
+To enable the port execute:
+sysrc solr_enable="YES"
+
+And start it with:
+service solr start
+
+=======================================================================
