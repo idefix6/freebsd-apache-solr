@@ -14,7 +14,8 @@ LICENSE=	APACHE20
 
 CONFLICTS_INSTALL=	apache-solr3-* apache-solr-4* apache-solr-5*
 
-RUN_DEPENDS=	bash:shells/bash
+RUN_DEPENDS=	bash:shells/bash \
+		lsof:sysutils/lsof
 
 USES=		cpe tar:tgz
 USE_JAVA=	yes
