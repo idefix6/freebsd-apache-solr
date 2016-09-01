@@ -40,11 +40,24 @@ load_rc_config $name
 : ${solr_instance:=%%PREFIX%%/solr/server/solr}
 : ${solr_port:=8983}
 
+solr_stop ()
+{
+	${command} stop
+}
+
+solr_status ()
+{
+	${command} status
+}
+
+# add %%PREFIX%%/bin to path
+export PATH=$PATH:%%PREFIX%%/bin
+
 required_files=${solr_instance}/solr.xml
-pidfile=/var/run/solr.pid
+pidfile=%%PREFIX%%/solr/bin/solr-${solr_port}.pid
 command=%%PREFIX%%/solr/bin/solr
-solr_env="PATH=/sbin:/bin:/usr/sbin:/usr/bin:/usr/games:/usr/local/sbin:/usr/local/bin"
-solr_chdir="/usr/local/solr"
+stop_cmd=solr_stop
+status_cmd=solr_status
 
 command_args=" ${solr_flags} -p ${solr_port} -s ${solr_instance} -a \"-Dsolr.log=/var/log\""
 
