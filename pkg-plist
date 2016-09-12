@@ -1,6 +1,6 @@
 @sample etc/solr.in.sh-dist etc/solr.in.sh
 @sample /var/db/solr/solr.xml-dist /var/db/solr/solr.xml
-@sample /var/log/solr/log4j.properties-dist /var/log/solr/log4j.properties
+@sample /var/db/solr/log4j.properties-dist /var/db/solr/log4j.properties
 solr/CHANGES.txt
 solr/LICENSE.txt
 solr/LUCENE_CHANGES.txt
