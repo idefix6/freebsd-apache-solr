@@ -5595,7 +5595,6 @@ solr/licenses/zookeeper-NOTICE.txt
 solr/server/README.txt
 solr/server/contexts/solr-jetty-context.xml
 solr/server/etc/jetty-http.xml
-solr/server/etc/jetty-http.xml.orig
 solr/server/etc/jetty-https.xml
 solr/server/etc/jetty-ssl.xml
 solr/server/etc/jetty.xml
