@@ -24,7 +24,7 @@
 # OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH
 # DAMAGE.
 
-# $FreeBSD: head/textproc/apache-solr/files/solr.in 421815 2016-09-11 11:43:36Z pi $
+# $FreeBSD: head/textproc/apache-solr/files/solr.in 438757 2017-04-18 01:37:21Z ler $
 #
 # PROVIDE: solr
 # REQUIRE: LOGIN
@@ -54,8 +54,8 @@ solr_status ()
 	su -m solr -c "${command} status"
 }
 
-# add %%PREFIX%%/bin to path
-export PATH=$PATH:%%PREFIX%%/bin
+# add %%LOCALBASE%%/bin to path
+export PATH=$PATH:%%LOCALBASE%%/bin
 # let the start script read some custom settings
 export SOLR_INCLUDE=/usr/local/etc/solr.in.sh
 
