@@ -1,8 +1,8 @@
 # Created by: Gea-Suan Lin <gslin@gslin.org>
-# $FreeBSD: head/textproc/apache-solr/Makefile 432210 2017-01-23 11:52:47Z vanilla $
+# $FreeBSD: head/textproc/apache-solr/Makefile 438757 2017-04-18 01:37:21Z ler $
 
 PORTNAME=	apache-solr
-PORTVERSION=	6.5.0
+PORTVERSION=	6.5.1
 CATEGORIES=	textproc java
 MASTER_SITES=	APACHE/lucene/solr/${PORTVERSION}
 DISTNAME=	solr-${PORTVERSION}
@@ -12,10 +12,9 @@ COMMENT=	High performance search server built using Lucene Java
 
 LICENSE=	APACHE20
 
-CONFLICTS_INSTALL=	apache-solr3-* apache-solr-4* apache-solr-5*
+RUN_DEPENDS=	bash:shells/bash
 
-RUN_DEPENDS=	bash:shells/bash \
-		lsof:sysutils/lsof
+CONFLICTS_INSTALL=	apache-solr3-* apache-solr-4* apache-solr-5*
 
 USES=		cpe tar:tgz
 USE_JAVA=	yes
